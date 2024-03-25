@@ -20,16 +20,9 @@
             $("#selectable").selectable();
             $('#target').css('position', 'relative').click(function(){
             $(this).animate({
-              right: -100
+              'background-color' : 'green'
             })
-            $(this).animate({
-              'width': '+=20',
-              'height' : '+=20'
-            })
-            $(this).animate({
-              'background-color' : 'red'
-            })
-            $(this).toggle("explode", {pieces: 16}, 2000, function(){alert('done!')})
+            $(this).toggle("explode", {pieces: 16}, 2000)
           })
             var availableLanguages = [
                 "Asp",
