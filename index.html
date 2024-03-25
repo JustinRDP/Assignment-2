@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+        <style>
+            #draggable { width: 150px; height: 150px; padding: 0.5em; }
+            #selectable .ui-selecting { background: #FECA40; }
+            #selectable .ui-selected { background: #F39814; color: white; }
+            #selectable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+            #selectable li { margin: 3px; padding: 0.4em; font-size: 1.4em; height: 18px; }
+            h3 {background-color: grey;}</style>
+        <script>$(document).ready(function(){
+            $("#datepicker").datepicker();
+            $("#slider").slider();
+            $("#accordion").accordion();
+            $("#draggable").draggable();
+            $("#draggable").resizable();
+            $("#selectable").selectable();
+            $('#target').css('position', 'relative').click(function(){
+            $(this).animate({
+              right: -100
+            })
+            $(this).animate({
+              'width': '+=20',
+              'height' : '+=20'
+            })
+            $(this).animate({
+              'background-color' : 'red'
+            })
+            $(this).toggle("explode", {pieces: 16}, 2000, function(){alert('done!')})
+          })
+            var availableLanguages = [
+                "Asp",
+                "C",
+                "C++",
+                "COBOL",
+                "Fortran",
+                "Java",
+                "JavaScript",
+                "PHP",
+                "Python",
+                "Ruby"
+              ];
+              $("#language").autocomplete({
+                source: availableLanguages
+              });
+              $( "#droppable" ).droppable({
+                drop: function( event, ui ) {
+                  $( this )
+                    .addClass( "ui-state-highlight" )
+                    .find( "p" )
+                      .html( "Dropped!" );
+                }
+              });
+          });</script>
+    </head> 
+    <body>
+      <h1 id="target">Registration (click me)</h1>
+      <div id="accordion">
+          <h3>Welcome</h3>
+          <div>
+            <p>Welcome to the Coding registration page!</p>
+          </div>
+          <h3>Instructions</h3>
+          <div>
+            <p>Enter all of your info down below.</p>
+          </div>
+        </div>
+        <div class="form">
+            <form name="registration">
+                <fieldset class="first-section">
+                    <legend>Registration Information</legend>
+                    <p>First Name: <input type="text" id="firstname"></p>
+                    <p>Last Name: <input type="text" id="lastname"></p>
+                    <p>Email: <input type="email" id="email"></p>
+                    <p>Password: <input type="password" id="password"></p>
+                    <p>Date of Birth: <input type="text" id="datepicker"></p>
+                  <p>Main Coding Language: <input type="text" id="language"></p>
+                    <p>Experience: <div id="slider"></div></p>
+                </fieldset>
+                <button>Submit</button><br>
+            </form>
+      </div>
+      <h3>Pick one.</h3>
+      <ol id="selectable">
+        <li class="ui-widget-content">Cats</li>
+        <li class="ui-widget-content">Dogs</li>
+      </ol>
+      <div id="draggable" class="ui-widget-content">
+        <p>Gary</p>
+      </div>
+      <div id="droppable" class="ui-widget-header">
+        <p>Drop Gary here.</p>
+      </div>
+    </body>
+</html>
